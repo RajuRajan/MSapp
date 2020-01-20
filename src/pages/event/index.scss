@@ -1,0 +1,94 @@
+.event-container {
+  overflow: hidden;
+  position: absolute;
+  right: -100%;
+  width: 100%;
+  -webkit-animation: slide 0.1s forwards;
+  -webkit-animation-delay: 0s;
+  animation: slide 0.2s forwards;
+  animation-delay: 0s;
+  background-color: #ffffff;
+
+  .service-listing-container {
+    height: 90%;
+    overflow: scroll;
+    .service-items {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      border-bottom: 3px solid #fafafa;
+      .service-name {
+        margin-left: 20px;
+        display: flex;
+        align-self: center;
+        font-size: 14px;
+      }
+      .service-img {
+        img {
+          border-radius: 0.5rem;
+        }
+      }
+    }
+    overflow-y: scroll;
+  }
+  @-webkit-keyframes slide {
+    100% {
+      right: 0;
+    }
+  }
+
+  @keyframes slide {
+    100% {
+      right: 0;
+    }
+  }
+}
+.slide-container {
+  bottom: 0%;
+  height: 0px;
+  background-color: #fafafa;
+  position: absolute;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  .button-container {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    height: 0px;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.slide-container.active {
+  bottom: 0%;
+  height: 70%;
+  .button-container {
+    height: 50px;
+  }
+}
+
+/* ---------------dimmer changes--------------*/
+
+.event-container.dimmer {
+  .service-listing-container {
+    background:
+        /* top, transparent black, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    );
+
+    
+    .service-items {
+      z-index: -1;
+      border-bottom: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+      border-bottom: none;
+      .service-img img {
+        opacity: 0.1;
+      }
+    }
+  }
+}

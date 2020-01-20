@@ -1,0 +1,33 @@
+.my-booking-card-container{
+    width: 100%;
+    padding: 16px;
+   .my-booking-card{
+    display: flex;
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+    padding: 16px;
+
+    .card-items{
+        margin-left: 16px;
+        width: 60%;
+    }
+    .captain-image{
+        width: 50%;
+        // display: flex;
+        // align-items: center;
+        padding-left: 16px;
+        align-self: center;
+        img{
+            width: 80%;
+            height: 80%;
+            border-radius: 1rem;
+        }
+    }
+    .label-color{
+        width: 30px;
+    }
+    .card-label{
+        font-weight: 600;
+        font-size: 14px;
+    }
+   }
+}
