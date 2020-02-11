@@ -20,12 +20,12 @@ module.exports = {
   deploy : {
     production : {
       'pre-deploy': 'git reset --hard',
-      user : 'raj-server',
+      user : 'ubuntu',
       host : '13.232.84.173',
       ref  : 'origin/master',
       repo : 'https://github.com/RajuRajan/MSapp.git',
       path : '/var/www/MSapp',
-      'post-deploy' : ' npm install &&  pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : 'sudo npm install && sudo  pm2 reload ecosystem.config.js --env production'
     }
   }
 };
