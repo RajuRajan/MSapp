@@ -20,7 +20,7 @@ module.exports = {
   deploy : {
     production : {
       user : 'raj-server',
-      host : 'http://13.232.84.173/',
+      host : '13.232.84.173',
       ref  : 'origin/master',
       repo : 'https://github.com/RajuRajan/MSapp.git',
       path : '/var/www/MSapp',
