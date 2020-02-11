@@ -19,7 +19,7 @@ module.exports = {
 
   deploy : {
     production : {
-      'pre-deploy': 'sudo git reset --hard',
+      'pre-deploy': ' git reset --hard  && git stash',
       user : 'ubuntu',
       host : '13.232.84.173',
       ref  : 'origin/master',
