@@ -19,6 +19,7 @@ module.exports = {
 
   deploy : {
     production : {
+      'pre-deploy': 'git reset --hard',
       user : 'raj-server',
       host : '13.232.84.173',
       ref  : 'origin/master',
