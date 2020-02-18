@@ -19,7 +19,7 @@ module.exports = {
 
   deploy : {
     production : {
-      key: '~/.ssh/id_rsa.pub',
+      key: '~/Downloads/aws-key.pem',
       user : 'ubuntu',
       host : '3.6.90.52',
       ref  : 'origin/master',
