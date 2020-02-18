@@ -23,7 +23,7 @@ module.exports = {
       host : '3.6.90.52',
       ref  : 'origin/master',
       repo : 'git@github.com:RajuRajan/MSapp.git',
-      path : '/MSapp',
+      path : 'MSapp',
       'post-deploy' : ' npm install &&   pm2 reload ecosystem.config.js --env production'
     }
   }
