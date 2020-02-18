@@ -19,7 +19,7 @@ module.exports = {
 
   deploy : {
     production : {
-      key: '~/Downloads/aws-key.pem',
+      key: '~/key/aws.pem',
       user : 'ubuntu',
       host : '3.6.90.52',
       ref  : 'origin/master',
