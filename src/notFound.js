@@ -3,7 +3,7 @@ import React from 'react'
 export default function NotFound(){
 return(
     <div>
-       only for mobile screen yeppppppppp
+       only for mobile screen
     </div>
 )
 }

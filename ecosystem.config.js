@@ -19,7 +19,7 @@ module.exports = {
 
   deploy : {
     production : {
-     'pre-deploy':"git pull origin master && npm run-script build",
+     'pre-deploy':" git pull origin master && npm run-script build && pm2 restart all ",
       key: '~/key/aws.pem',
       user : 'ubuntu',
       host : '3.6.90.52',
