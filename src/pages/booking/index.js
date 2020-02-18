@@ -5,11 +5,17 @@ export default class Booking extends React.Component {
   constructor(props) {
     super(props);
   }
+  call(){
+    const data={name:"vasu"}
+  axios.post("/name",data).then(res=>
+    console.log("==========",res)
+    )
+  }
 
   render() {
     return (
       <div className="booking-container">
-          <div className="booking-content-fields">
+          <div className="booking-content-fields" onClick={call()}>
       hi
           </div>
         <div className="button-container">
