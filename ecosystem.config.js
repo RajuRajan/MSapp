@@ -19,7 +19,6 @@ module.exports = {
 
   deploy : {
     production : {
-     'pre-deploy':" git pull origin master && npm run-script build && pm2 restart all ",
       key: '~/key/aws.pem',
       user : 'ubuntu',
       host : '3.6.90.52',
@@ -27,7 +26,7 @@ module.exports = {
       repo : 'git@github.com:RajuRajan/MSapp.git',
       "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
       path : 'MSapp',
-      'post-deploy' : ' npm install &&   pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : ' git pull origin master && npm run-script build && pm2 restart all&& npm install &&   pm2 reload ecosystem.config.js --env production'
     }
   }
 };
