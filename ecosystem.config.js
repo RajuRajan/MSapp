@@ -19,7 +19,6 @@ module.exports = {
 
   deploy : {
     production : {
-       'pre-deploy':'npm build'
       user : 'ubuntu',
       host : '3.6.90.52',
       ref  : 'origin/master',
