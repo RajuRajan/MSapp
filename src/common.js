@@ -1,11 +1,11 @@
 export const serviceList = [
-  {
-    title: "Salon & Massage at Home",
-    sub_title: "Services from Women",
-    category_link: "smh",
-    img:
-      "https://res.cloudinary.com/urbanclap/image/upload/w_700,f_auto,q_80/categories/category_v2/category_6904b8d0.jpeg"
-  },
+  // {
+  //   title: "Salon & Massage at Home",
+  //   sub_title: "Services from Women",
+  //   category_link: "smh",
+  //   img:
+  //     "https://res.cloudinary.com/urbanclap/image/upload/w_700,f_auto,q_80/categories/category_v2/category_6904b8d0.jpeg"
+  // },
   {
     title: "Plumber, Electrician, Carpenter",
     category_link: "pec",

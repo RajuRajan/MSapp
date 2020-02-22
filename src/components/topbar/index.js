@@ -74,6 +74,7 @@ export default function MenuAppBar({ history, setCategory, ...props }) {
   };
 
   function getComponent(){
+    if(history.location.pathname==="/"){history.push("/home")}
     switch(history.location.pathname.split("/")[1]){
       case "home":
         return  <Listing setCategory={setCategory} history={history} />;

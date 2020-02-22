@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import {userService} from '../../_services/'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -53,8 +54,33 @@ const useStyles = makeStyles(theme => ({
 export default function SignIn({history}) {
   const classes = useStyles();
 
+  const [state,setState]= useState({
+    email:'',
+    password:''
+  })
+
+  function generateOpts(){
+    return  {
+      'email':state?.email,
+      'password':state.password,
+      }
+  }
+
+  async function login(){
+    const res = await userService.loginUser(generateOpts());
+    if(res?.data?.code===200){
+      localStorage.setItem("login_status",true);
+      localStorage.setItem("user_id",res.data.id)
+      history.push('/home')
+      window.location.reload() 
+    }
+    else{
+      alert(res.data.error_message)
+    }
+  }
+
   return (
-    <Container component="main" maxWidth="xs">{console.log("browser ==",history)}
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -63,7 +89,7 @@ export default function SignIn({history}) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={(e)=>{e.preventDefault();login();}} >
           <TextField
             variant="outlined"
             margin="normal"
@@ -74,6 +100,8 @@ export default function SignIn({history}) {
             name="email"
             autoComplete="email"
             autoFocus
+            value={state.email}
+            onChange={(e)=>setState({...state,email:e.target.value})}
           />
           <TextField
             variant="outlined"
@@ -85,22 +113,16 @@ export default function SignIn({history}) {
             type="password"
             id="password"
             autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            value={state.password}
+            onChange={(e)=>setState({...state,password:e.target.value})}
           />
           <Button
-            type="button"
+            type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.Button}
-            onClick={()=>{localStorage.setItem("login_status",true);
-            history.push({
-              pathname:"/home"
-              
-            }); window.location.reload();}} >
+            className={classes.submit}
+            >
             Sign In
           </Button>
           <Grid container className={classes.containerPadding}>
