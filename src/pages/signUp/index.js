@@ -84,7 +84,7 @@ export default function SignUp({history}) {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs">{console.log("state...............",state)}
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -154,18 +154,22 @@ export default function SignUp({history}) {
                 id="tags-outlined"
                 options={top100Films}
                 getOptionLabel={option => option.title}
-                defaultValue={[top100Films[13]]}
+                // defaultValue={[top100Films[13]]}
                 filterSelectedOptions
-                onChange={(e)=>{setState({...state,workKnown:e.target.value})}}
+                onChange={(e)=>{console.log("event.................",e.target['data-option-index']);console.log(document.getElementById(e.target.id)['data-option-index'])}}
                 renderInput={params => (
+                  <>
                   <TextField
                     {...params}
                     variant="outlined"
                     label="Works Known"
                     placeholder="Works Known"
                     fullWidth
-                   
-                  />)}
+                    
+                  />
+                  {console.log("..............",params)}
+                  </>
+                  )}
               />
             </Grid>
             

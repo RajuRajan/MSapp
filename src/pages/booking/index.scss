@@ -1,9 +1,11 @@
 
 .booking-container {
     display: block;
-    height: 100%;
+    height: 90%;
+    overflow: auto;
     .cancel-button {
         border: none;
+        z-index: 4;
         box-shadow: none;
         font-weight: 600;
         outline: none;
@@ -21,6 +23,7 @@
       }
       .book-button {
         border: none;
+        z-index: 4;
         box-shadow: none;
         font-weight: 600;
         outline: none;
@@ -34,6 +37,23 @@
         padding: 10px;
         font-size: 18px;
       }
-
-
+      .stepper-custom-container .MuiPaper-root.MuiStepper-root.MuiStepper-horizontal.MuiStepper-alternativeLabel.MuiPaper-elevation0{
+        padding: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 4;
+    
+      }
+      .stepper-custom-container .MuiStepIcon-root.MuiStepIcon-active,.MuiStepIcon-root.MuiStepIcon-completed{
+        color: black;
+      }
+      .stepper-custom-container .MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary{
+        background-color: black;
+      }
+      .stepper-custom-container .TimePicker-header-604{
+        background: black;
+      }
+      .stepper-custom-container .booking-stepper-label{
+        font-size: 12px;
+      }
 }

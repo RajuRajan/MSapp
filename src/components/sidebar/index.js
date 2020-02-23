@@ -15,6 +15,7 @@ import UserContext from '../../UserContext'
 const useStyles = makeStyles({
   list: {
     width: 250,
+    fontFamily:`Ubuntu',sans-serif `
   }
 });
 
@@ -72,7 +73,7 @@ export default function SwipeableTemporaryDrawer({history}) {
       <Divider />
       <List>
         {[{value:'Privacy Policy',link:'/privacy-policy'},{value:'Terms of Use',link:'/terms-of-use'}].map((text, index) => (
-          <Link to={text.link} onClick={()=>history.push(text.link)}>
+          <Link to={text.link} onClick={()=>{history.push(text.link); setToggle(false);setState({left:false})}}>
           <ListItem button key={text.value}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text.value} />
@@ -89,6 +90,7 @@ export default function SwipeableTemporaryDrawer({history}) {
         open={state?.left}
         onClose={toggleDrawer()}
         onOpen={toggleDrawer()}
+        disableSwipeToOpen={true}
       >
         {sideList('left')}
       </SwipeableDrawer>
