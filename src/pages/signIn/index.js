@@ -67,9 +67,9 @@ export default function SignIn({history}) {
   }
 
   async function login(){
-    localStorage.setItem("login_status",true);
-    history.push('/home')
-    window.location.reload() 
+    // localStorage.setItem("login_status",true);
+    // history.push('/home')
+    // window.location.reload() 
     const res = await userService.loginUser(generateOpts());
     if(res?.data?.code===200){
       localStorage.setItem("login_status",true);

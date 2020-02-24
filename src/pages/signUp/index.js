@@ -156,7 +156,7 @@ export default function SignUp({history}) {
                 getOptionLabel={option => option.title}
                 // defaultValue={[top100Films[13]]}
                 filterSelectedOptions
-                onChange={(e)=>{console.log("event.................",e.target['data-option-index']);console.log(document.getElementById(e.target.id)['data-option-index'])}}
+                // onChange={(e)=>{console.log("event.................",e.target['data-option-index']);console.log(document.getElementById(e.target.id)['data-option-index'])}}
                 renderInput={params => (
                   <>
                   <TextField

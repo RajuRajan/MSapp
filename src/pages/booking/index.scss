@@ -37,6 +37,9 @@
         padding: 10px;
         font-size: 18px;
       }
+      .book-button.disabled{
+        opacity: 0.6;
+      }
       .stepper-custom-container .MuiPaper-root.MuiStepper-root.MuiStepper-horizontal.MuiStepper-alternativeLabel.MuiPaper-elevation0{
         padding: 10px;
         position: sticky;

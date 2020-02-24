@@ -4,7 +4,8 @@ import { API } from '../_helpers/';
 
 export const userService={
     createUser,
-    loginUser
+    loginUser,
+    bookService
 }
 
 function createUser(data){
@@ -12,4 +13,7 @@ function createUser(data){
 }
 function loginUser(data){
     return  API.post('/user/signin',data)
+}
+function bookService(data){
+    return  API.post('/user/bookService',data)
 }

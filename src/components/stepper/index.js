@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import { makeStyles,createMuiTheme } from '@material-ui/core/styles';
+import React, { useState, useEffect } from 'react';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -12,19 +12,12 @@ import Grid from '@material-ui/core/Grid';
 import TimeInput from 'material-ui-time-picker'
 import SimpleSelect from '../dropdown';
 
-const theme = createMuiTheme({
-    typography: {
-      fontFamily: [
-        'Ubuntu,sans-serif'
-      ].join(','),
-    },
-  });
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
         color: 'black',
-        fontFamily:`Ubuntu',sans-serif `,
-        fontSize:'12px'
+        fontFamily: `Ubuntu',sans-serif `,
+        fontSize: '12px'
     },
     backButton: {
         marginRight: theme.spacing(1),
@@ -39,7 +32,7 @@ function getSteps() {
     return ['Select address', 'Select time', 'Payment'];
 }
 
-function getStepContent(stepIndex,handleChange,handleTimeChange,state) {
+function getStepContent(stepIndex, handleChange, handleTimeChange, state) {
     switch (stepIndex) {
         case 0:
             return (
@@ -56,11 +49,9 @@ function getStepContent(stepIndex,handleChange,handleTimeChange,state) {
                                 label="City"
                                 onChange={handleChange}
                                 value={state.city}
-                            // onChange={(e)=>setState({...state,firstName:e.target.value})}
-                            // autoFocus
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>  
+                        <Grid item xs={12} sm={6}>
                             <TextField
                                 autoComplete="pincode"
                                 name="pincode"
@@ -71,9 +62,6 @@ function getStepContent(stepIndex,handleChange,handleTimeChange,state) {
                                 label="Pincode"
                                 onChange={handleChange}
                                 value={state.pincode}
-                            // value={state.firstName}
-                            // onChange={(e)=>setState({...state,firstName:e.target.value})}
-                            // autoFocus
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -88,10 +76,10 @@ function getStepContent(stepIndex,handleChange,handleTimeChange,state) {
                                 multiline
                                 value={state.address}
                                 onChange={handleChange}
-                            // autoFocus
                             />
                         </Grid>
                     </Grid>
+                  {state.tabOneError&&<div style={{paddingTop:"5px",color:"red"}}>Fill all required field</div>}  
                 </div>
 
             )
@@ -112,12 +100,13 @@ function getStepContent(stepIndex,handleChange,handleTimeChange,state) {
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                        <SimpleSelect  handleChange={handleChange} initialValue={state.bidHour}/>
+                            <SimpleSelect handleChange={handleChange} initialValue={state.bidHour} />
                         </Grid>
-                    
+
                         <Grid item xs={12} >
                         </Grid>
                     </Grid>
+                    {state.tabTwoError&&<div style={{paddingTop:"5px",color:"red"}}>Fill all required field</div>}  
                 </div>
             );
         case 2:
@@ -127,45 +116,63 @@ function getStepContent(stepIndex,handleChange,handleTimeChange,state) {
     }
 }
 
-export default function HorizontalLabelPositionBelowStepper({updateParentState}) {
+export default function HorizontalLabelPositionBelowStepper({ updateParentState }) {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
     const handleNext = () => {
-        setActiveStep(prevActiveStep => prevActiveStep + 1);
+        if (activeStep === 0) {
+            if (state.city && state.pincode && state.address) {
+                setState({...state,tabOneError:false})
+                 setActiveStep(prevActiveStep => prevActiveStep + 1);
+            }
+            else{
+                setState({...state,tabOneError:true})
+            }
+        }
+        if (activeStep === 1) {
+
+            if (state.serviceTime && state.bidHour) {
+                 setActiveStep(prevActiveStep => prevActiveStep + 1);
+                 setState({...state,tabTwoError:false})
+            }
+            else{
+                setState({...state,tabTwoError:true})
+            }
+        }
+        if (activeStep === 2) {
+             setActiveStep(prevActiveStep => prevActiveStep + 1);
+        }
     };
 
     const handleBack = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1);
     };
 
-    const  handleReset = () => {
+    const handleReset = () => {
         setActiveStep(0);
     };
 
-    const [state,setState]=useState({
-        bidHour:''
+    const [state, setState] = useState({
+        bidHour: ''
     })
 
     useEffect(() => {
-        console.log("in")
-        /* As long as a difference in state pass the updated state back to the parent */
-        // if (!isEqual(prevState, state)) {
-            updateParentState(state);
-        // }
-    },[state]);
-    
+        updateParentState(state);
 
-    const handleChange =e=>{
-    setState({...state,[e.target.name]:e.target.value})
+    }, [state]);
+
+
+    const handleChange = e => {
+        setState({ ...state, [e.target.name]: e.target.value })
     }
-    const handleTimeChange =e =>{
-        setState({...state,serviceTime:e})
+    const handleTimeChange = e => {
+        setState({ ...state, serviceTime: e })
     }
     return (
         <div className={classes.root}>
-            <Stepper activeStep={activeStep} alternativeLabel theme={theme}>
+            <Stepper activeStep={activeStep} alternativeLabel >
                 {steps.map(label => (
                     <Step key={label}>
                         <StepLabel>{label}</StepLabel>
@@ -176,13 +183,13 @@ export default function HorizontalLabelPositionBelowStepper({updateParentState})
                 {activeStep === steps.length ? (
                     <div >
                         <Typography className={classes.instructions}>All steps completed</Typography>
-                        <Button onClick={handleReset}>Reset</Button>
+                        {/* <Button onClick={handleReset}>Reset</Button> */}
                     </div>
                 ) : (
                         <div>
                             <Typography className={classes.instructions}>
                                 <div style={{ padding: '20px 0px' }}>{
-                                    getStepContent(activeStep,handleChange,handleTimeChange,state)}
+                                    getStepContent(activeStep, handleChange, handleTimeChange, state)}
                                 </div>
 
                             </Typography>

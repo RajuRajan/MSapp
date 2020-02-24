@@ -35,7 +35,7 @@ export default function Event(props) {
         {categoryDetails.services
           ? categoryDetails?.services.map(value => {
               return (
-                <div className="service-items" onClick={() => setSlider(true)}>
+                <div className="service-items" onClick={() => {setSlider(true);props.history.push({state:{category:props.category,subCategory:value.service_name}})}}>
                   <div className="service-img">
                     <img
                       src={value.service_img}
@@ -50,7 +50,7 @@ export default function Event(props) {
           : ""}
       </div>
       <div className={`slide-container ${slider ? `active` : ``}`} >
-       <Booking toggleSlider={setSlider}/>
+       <Booking toggleSlider={setSlider} history={props.history}/>
 
       </div>
     </div>
