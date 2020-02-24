@@ -9,11 +9,11 @@ export const userService={
 }
 
 function createUser(data){
-    return  API.post('/user/signup',data)
+    return  API.post('/api/user/signup',data)
 }
 function loginUser(data){
-    return  API.post('/user/signin',data)
+    return  API.post('/api/user/signin',data)
 }
 function bookService(data){
-    return  API.post('/user/bookService',data)
+    return  API.post('/api/user/bookService',data)
 }
