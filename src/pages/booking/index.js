@@ -1,7 +1,9 @@
 import React from "react";
 import "./index.scss";
 import HorizontalLabelPositionBelowStepper from '../../components/stepper'
-import {userService} from '../../_services'
+import {userService,getUUID} from '../../_services'
+import moment from 'moment'
+
 
 
 export default class Booking extends React.Component {
@@ -13,18 +15,24 @@ export default class Booking extends React.Component {
   }
 
   generateopts(){
-    const {bidHour ,city ,pincode ,address ,serviceTime}=this.state.slotState
+    const {bidHour ,city ,pincode ,address ,serviceTime,phoneNo}=this.state.slotState
     const subCategory=this.props.history.location.state.subCategory
     const user_id=localStorage.getItem('user_id')
+    const bookingStatus="Pending"
+    const bookingId=getUUID()
+    const bookingTime=moment().format("hh:mm")
     return {
-      bidHour,city,pincode,address,serviceTime,subCategory,user_id
+      bidHour,city,pincode,address,serviceTime,subCategory,user_id,bookingId,bookingStatus,bookingTime,phoneNo
     }
   }
 
   async saveBooking(){
     const opts=this.generateopts();
     const data= await userService.bookService(opts);
-    console.log(data)
+    if(data.data.code===200){
+      this.props.history.push("/my-bookings")
+      window.location.reload()
+    }
   }
   render() {
     return (

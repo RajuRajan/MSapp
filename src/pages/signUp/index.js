@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import MultipleSelect from '../../components/multiSelect';
 
 function Copyright() {
   return (
@@ -59,6 +60,7 @@ export default function SignUp({history}) {
     email:'',
     password:'',
     phoneNo:'',
+    workKnown:[]
 
   })
 
@@ -69,8 +71,8 @@ export default function SignUp({history}) {
       'email':state?.email,
       'password':state.password,
       "phoneNo": state.phoneNo,
-      "workKnown": ["electrical","painting"],
-      "captain": true
+      "workKnown": state.workKnown,
+      "captain": state.workKnown.length?true:false
       }
   }
  async function saveDetails(){
@@ -83,8 +85,23 @@ export default function SignUp({history}) {
     }
   }
 
+  const handleChange = event => {
+    setState({...state,workKnown:event.target.value});
+  };
+
+  const handleChangeMultiple = event => {
+    const { options } = event.target;
+    const value = [];
+    for (let i = 0, l = options.length; i < l; i += 1) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+    setState({workKnown:value})
+    // setWorksKnown(value);
+  };
   return (
-    <Container component="main" maxWidth="xs">{console.log("state...............",state)}
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -149,28 +166,8 @@ export default function SignUp({history}) {
               />
             </Grid>
             <Grid item xs={12}>
-            <Autocomplete
-                multiple
-                id="tags-outlined"
-                options={top100Films}
-                getOptionLabel={option => option.title}
-                // defaultValue={[top100Films[13]]}
-                filterSelectedOptions
-                // onChange={(e)=>{console.log("event.................",e.target['data-option-index']);console.log(document.getElementById(e.target.id)['data-option-index'])}}
-                renderInput={params => (
-                  <>
-                  <TextField
-                    {...params}
-                    variant="outlined"
-                    label="Works Known"
-                    placeholder="Works Known"
-                    fullWidth
-                    
-                  />
-                  {console.log("..............",params)}
-                  </>
-                  )}
-              />
+
+              <MultipleSelect handleChange={handleChange} handleChangeMultiple={handleChangeMultiple} worksKnown={state.workKnown}/>
             </Grid>
             
             <Grid item xs={12}>

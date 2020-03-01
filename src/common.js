@@ -320,42 +320,42 @@ export function getCategoryDetails(cat) {
   }
 }
 
-export const myBooking =[{
-  booking_id:"#123456",
-  booking_type:"Refirigirator",
-  booking_category:"pec",
-  booking_status:"Rejected",
-  appointment_time:"1:00pm",
-  booking_time:"4:00pm",
-  captain_charge:"$35",
-  isappointment_fixed:false,
-  isrejected:true,
-  captain_name:"John",
-  captain_number:"123456789"
+export const myBooking = [{
+  bookingId: "#123456",
+  subCategory: "Refirigirator",
+  bookingCategory: "pec",
+  bookingStatus: "Rejected",
+  appointmentTime: "1:00pm",
+  bookingTime: "4:00pm",
+  captainCharge: "$35",
+  isappointmentFixed: false,
+  isrejected: true,
+  captainName: "John",
+  captainNumber: "123456789"
 },
 {
-  booking_id:"#67890",
-  booking_type:"Stablizer",
-  booking_category:"pec",
-  booking_status:"pending",
-  appointment_time:"2:00pm",
-  booking_time:"4:00pm",
-  captain_charge:"$35",
-  isappointment_fixed:true,
-  captain_name:"Alan",
-  captain_number:"123456789"
+  bookingId: "#67890",
+  subCategory: "Stablizer",
+  bookingCategory: "pec",
+  bookingStatus: "pending",
+  appointmentTime: "2:00pm",
+  bookingTime: "4:00pm",
+  captainCharge: "$35",
+  isappointmentFixed: true,
+  captainName: "Alan",
+  captainNumber: "123456789"
 },
 {
-  booking_id:"#67890",
-  booking_type:"Stablizer",
-  booking_category:"pec",
-  booking_status:"Pending",
-  appointment_time:"2:00pm",
-  booking_time:"4:00pm",
-  captain_charge:"$35",
-  isappointment_fixed:false,
-  isrejected:false,
-  captain_name:"Walker",
-  captain_number:"123456789"
+  bookingId: "#67890",
+  subCategory: "Stablizer",
+  bookingCategory: "pec",
+  bookingStatus: "Pending",
+  appointmentTime: "2:00pm",
+  bookingTime: "4:00pm",
+  captainCharge: "$35",
+  isappointmentFixed: false,
+  isrejected: false,
+  captainName: "Walker",
+  captainNumber: "123456789"
 }
 ]

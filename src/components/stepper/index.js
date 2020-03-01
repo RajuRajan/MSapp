@@ -11,6 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import TimeInput from 'material-ui-time-picker'
 import SimpleSelect from '../dropdown';
+import timedata from '../../time.json'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -47,6 +48,7 @@ function getStepContent(stepIndex, handleChange, handleTimeChange, state) {
                                 fullWidth
                                 id="city"
                                 label="City"
+                                error={state.tabOneError&& !state.city && true} 
                                 onChange={handleChange}
                                 value={state.city}
                             />
@@ -62,6 +64,7 @@ function getStepContent(stepIndex, handleChange, handleTimeChange, state) {
                                 label="Pincode"
                                 onChange={handleChange}
                                 value={state.pincode}
+                                error={state.tabOneError&& !state.pincode && true} 
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -76,6 +79,22 @@ function getStepContent(stepIndex, handleChange, handleTimeChange, state) {
                                 multiline
                                 value={state.address}
                                 onChange={handleChange}
+                                error={state.tabOneError&& !state.address && true} 
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                autoComplete="phoneNo"
+                                name="phoneNo"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="phoneNo"
+                                label="Phone No"
+                                multiline
+                                value={state.phoneNo}
+                                onChange={handleChange}
+                                error={state.tabOneError&& !state.phoneNo && true} 
                             />
                         </Grid>
                     </Grid>
@@ -97,10 +116,11 @@ function getStepContent(stepIndex, handleChange, handleTimeChange, state) {
                                 onChange={handleTimeChange}
                                 value={state.serviceTime}
                                 id="serviceTime"
+                                error={state.tabTwoError&& !state.serviceTime && true} 
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <SimpleSelect handleChange={handleChange} initialValue={state.bidHour} />
+                            <SimpleSelect handleChange={handleChange} initialValue={state.bidHour}  error={state.tabTwoError&& !state.bidHour && true} name="bidHour" label="Bid Hour" timedata={timedata} />
                         </Grid>
 
                         <Grid item xs={12} >
@@ -123,7 +143,7 @@ export default function HorizontalLabelPositionBelowStepper({ updateParentState 
 
     const handleNext = () => {
         if (activeStep === 0) {
-            if (state.city && state.pincode && state.address) {
+            if (state.city && state.pincode && state.address && state.phoneNo) {
                 setState({...state,tabOneError:false})
                  setActiveStep(prevActiveStep => prevActiveStep + 1);
             }

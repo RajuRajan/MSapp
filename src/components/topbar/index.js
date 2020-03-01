@@ -20,6 +20,7 @@ import UserContext from "../../UserContext";
 import { Listing } from "../listing";
 import Terms from "../../pages/terms";
 import Mybooking from "../../pages/mybooking";
+import Bid from "../../pages/Bid";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -84,6 +85,8 @@ export default function MenuAppBar({ history, setCategory, ...props }) {
         return <Terms history={history} />; 
       case "my-bookings":
         return <Mybooking />;
+      case "bids":
+        return <Bid/>;
     }
   }
 

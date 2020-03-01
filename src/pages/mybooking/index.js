@@ -1,12 +1,24 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { myBooking } from "../../common";
 import "./index.scss";
+import {userService} from '../../_services'
+import {getUserId} from '../../_helpers'
 
-export default function Mybooking({ history }) {
-  return myBooking.map(value => {
+export default function Mybooking({ history={} }) {
+  const [myBookings,setMyBookings]=useState(0)
+
+  useEffect(()=>{
+  userService.getBookings({user_id:getUserId()}).then(res=>
+    setMyBookings(res.data.data)
+    )
+  },[])
+
+  return (
+    <>
+  {myBookings.length? myBookings?.map(value => {
     return (
       <div className="my-booking-card-container">
-        {value?.isappointment_fixed ? (
+        {value?.isappointmentFixed ? (
           <div className="my-booking-card">
             <div
               className="label-color"
@@ -18,24 +30,24 @@ export default function Mybooking({ history }) {
             ></div>
             <div className="card-items">
               <div className="card-item">
-                <div className="card-label">Booking id </div>
-                <div>{value.booking_id}</div>
+                <div className="card-label">Booking Id </div>
+                <div>#{value.bookingId}</div>
               </div>
               <div className="card-item">
-                <div className="card-label">Captain name </div>
-                <div>{value.captain_name}</div>
+                <div className="card-label">Captain Name </div>
+                <div>{value.captainName}</div>
               </div>
               <div className="card-item">
-                <div className="card-label">Captain number </div>{" "}
-                <div>{value.captain_number}</div>{" "}
+                <div className="card-label">Captain Number </div>{" "}
+                <div>{value.captainNumber}</div>{" "}
               </div>
               <div className="card-item">
-                <div className="card-label">Service charge </div>
-                <div>{value.captain_charge}</div>
+                <div className="card-label">Service Charge </div>
+                <div>{value.captainCharge}</div>
               </div>
               <div className="card-item">
-                <div className="card-label">Appointment time</div>
-                <div>{value.appointment_time}</div>
+                <div className="card-label">Appointment Time</div>
+                <div>{value.appointmentTime}</div>
               </div>
             </div>
             <div className="captain-image">
@@ -62,25 +74,29 @@ export default function Mybooking({ history }) {
             ></div>
             <div className="card-items">
               <div className="card-item">
-                <div className="card-label">Booking issue </div>{" "}
-                <div>{value.booking_type}</div>{" "}
+                <div className="card-label">Booking Service </div>{" "}
+                <div>{value.subCategory}</div>{" "}
               </div>
               <div className="card-item">
-                <div className="card-label">Booking time </div>
-                <div>{value.booking_time}</div>
+                <div className="card-label">Booking Time </div>
+                <div>{value.bookingTime}</div>
               </div>
               <div className="card-item">
-                <div className="card-label">Booking id </div>
-                <div>{value.booking_id}</div>
+                <div className="card-label">Booking Id </div>
+                <div>#{value.bookingId}</div>
               </div>
               <div className="card-item">
-                <div className="card-label">Booking status </div>
-                <div>{value.booking_status}</div>
+                <div className="card-label">Booking Status </div>
+                <div>{value.bookingStatus}</div>
               </div>
             </div>
           </div>
         )}
       </div>
     );
-  });
+  }):<div style={{height:"230px",textAlign:"center",marginTop:"50%"}}>No Bookings To Show</div>}
+  </>
+  )
+  
 }
+  

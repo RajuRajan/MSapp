@@ -5,7 +5,9 @@ import { API } from '../_helpers/';
 export const userService={
     createUser,
     loginUser,
-    bookService
+    bookService,
+    getBookings,
+    getBids
 }
 
 function createUser(data){
@@ -16,4 +18,10 @@ function loginUser(data){
 }
 function bookService(data){
     return  API.post('/api/user/bookService',data)
+}
+function getBookings(data){
+    return API.post('/api/user/getBookings',data)
+}
+function getBids(data){
+    return API.post('/api/user/getBids',data)
 }

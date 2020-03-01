@@ -6,7 +6,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
-import timedata from '../../time.json'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleSelect({handleChange,initialvalue}) {
+ function SimpleSelect({handleChange,initialvalue,error=false,name,label,timedata}) {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
 
@@ -37,14 +37,15 @@ export default function SimpleSelect({handleChange,initialvalue}) {
     <div>
 
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Bid Hour</InputLabel>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
-          name="bidHour"
+          name={name}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={initialvalue}
           onChange={handleChange}
           labelWidth={labelWidth}
+          error={error}
         >
         {timedata.map(val=>{
             return <MenuItem value={val.value}>{val.text}</MenuItem>
@@ -55,10 +56,17 @@ export default function SimpleSelect({handleChange,initialvalue}) {
         </Select>
       </FormControl>
 
-
-
-     
-
     </div>
   );
 }
+
+SimpleSelect.propTypes = {
+  timedata:PropTypes.object.isRequired,
+  label:PropTypes.string.isRequired,
+  name:PropTypes.string.isRequired,
+  handleChange:PropTypes.func.isRequired,
+  initialvalue:PropTypes.string.isRequired,
+  error:PropTypes.bool
+}
+
+export default SimpleSelect
