@@ -15,7 +15,7 @@ export default function Mybooking({ history={} }) {
 
   return (
     <>
-  {myBookings.length? myBookings?.map(value => {
+  {myBookings?.length? myBookings?.map(value => {
     return (
       <div className="my-booking-card-container">
         {value?.isappointmentFixed ? (

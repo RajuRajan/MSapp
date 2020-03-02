@@ -16,7 +16,7 @@ userService.getBids({user_id:getUserId()}).then(
 },[])
 return(
     <div className="bid-container">
-    {state.bids.length?
+    {state.bids?.length?
     state.bids?.map(value=>{
     return <div className="bid-item"><ExpansionCard details={value}/></div>
     }
