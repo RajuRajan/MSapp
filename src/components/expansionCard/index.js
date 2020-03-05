@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -12,7 +12,9 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import SimpleSelect from '../dropdown'
 import AddIcCallIcon from '@material-ui/icons/AddIcCall';
-
+import {userService} from '../../_services'
+import {getUserId} from '../../_helpers'
+import moment from 'moment'
 const BID_AMOUNT=[
     {
         "key": 0,
@@ -34,9 +36,11 @@ const BID_AMOUNT=[
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
+    fontFamily:'"Ubuntu", sans-serif'
   },
   heading: {
-    fontSize: theme.typography.pxToRem(12),
+    fontSize: theme.typography.pxToRem(14),
+    fontFamily:'"Ubuntu", sans-serif',
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(12),
@@ -72,11 +76,31 @@ const useStyles = makeStyles(theme => ({
         backgroundColor:"black"
     }
   },
+  timeValue:{
+    color:"darkgrey"
+  }
+
 }));
 
 export default function ExpansionCard({details}) {
   const classes = useStyles();
-
+  const [err,setErr]=useState(false)
+  const[bidAmount,setBidAmount]=useState(0)
+  function saveBid(){
+    if(!bidAmount){
+      setErr(true)
+    }
+    else{
+      setErr(false)
+    userService.bidService({userId:getUserId(),bookingId:details.bookingId,bidAmount}).then(
+      res=>
+      console.log(res)
+    )
+    }
+  }
+  function handleChange(e){
+    setBidAmount(e.target.value);
+  }
   return (
     <div className={classes.root}>
       <ExpansionPanel >
@@ -97,7 +121,9 @@ export default function ExpansionCard({details}) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
           <div className={classes.innercolumn}>
-          <SimpleSelect handleChange={()=>{}} initialValue=""  error={false} name="bidAmount" label="Bid Amount"
+            <div style={{fontSize:"12px"}}>Service Time</div>
+            <div className={classes.timeValue}>{moment(details.serviceTime).format("hh:mm a")}</div>
+          <SimpleSelect handleChange={handleChange} initialValue=""  error={err} name="bidAmount" label="Bid Amount"
            timedata={BID_AMOUNT} />
           </div>
           <div className={clsx(classes.innercolumn, classes.helper)}>
@@ -113,7 +139,7 @@ export default function ExpansionCard({details}) {
         <Divider />
         <ExpansionPanelActions className={classes.actionsTab}>
           <Button size="small">Cancel</Button>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={()=>saveBid()}>
             Bid
           </Button>
         </ExpansionPanelActions>

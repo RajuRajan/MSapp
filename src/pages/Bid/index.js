@@ -21,20 +21,7 @@ return(
     return <div className="bid-item"><ExpansionCard details={value}/></div>
     }
     ):<div style={{textAlign:"center",marginTop:"200px"}}>Sorry No Bids Available :(</div>
-    }
-       
-        {/* <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div>
-        <div className="bid-item"><ExpansionCard /></div> */}
-         
+    }    
     </div>
   
 )

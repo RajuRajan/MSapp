@@ -7,7 +7,8 @@ export const userService={
     loginUser,
     bookService,
     getBookings,
-    getBids
+    getBids,
+    bidService
 }
 
 function createUser(data){
@@ -24,4 +25,7 @@ function getBookings(data){
 }
 function getBids(data){
     return API.post('/api/user/getBids',data)
+}
+function bidService(data){
+    return API.post('/api/user/bidService',data)
 }

@@ -31,23 +31,23 @@ export default function Mybooking({ history={} }) {
             <div className="card-items">
               <div className="card-item">
                 <div className="card-label">Booking Id </div>
-                <div>#{value.bookingId}</div>
+                <div className="card-value">#{value.bookingId}</div>
               </div>
               <div className="card-item">
                 <div className="card-label">Captain Name </div>
-                <div>{value.captainName}</div>
+                <div className="card-value">{value.captainName}</div>
               </div>
               <div className="card-item">
                 <div className="card-label">Captain Number </div>{" "}
-                <div>{value.captainNumber}</div>{" "}
+                <div className="card-value">{value.captainNumber}</div>{" "}
               </div>
               <div className="card-item">
                 <div className="card-label">Service Charge </div>
-                <div>{value.captainCharge}</div>
+                <div className="card-value">{value.captainCharge}</div>
               </div>
               <div className="card-item">
                 <div className="card-label">Appointment Time</div>
-                <div>{value.appointmentTime}</div>
+                <div className="card-value">{value.appointmentTime}</div>
               </div>
             </div>
             <div className="captain-image">
@@ -75,19 +75,19 @@ export default function Mybooking({ history={} }) {
             <div className="card-items">
               <div className="card-item">
                 <div className="card-label">Booking Service </div>{" "}
-                <div>{value.subCategory}</div>{" "}
+                <div className="card-value">{value.subCategory}</div>{" "}
               </div>
               <div className="card-item">
                 <div className="card-label">Booking Time </div>
-                <div>{value.bookingTime}</div>
+                <div className="card-value">{value.bookingTime}</div>
               </div>
               <div className="card-item">
                 <div className="card-label">Booking Id </div>
-                <div>#{value.bookingId}</div>
+                <div className="card-value">#{value.bookingId}</div>
               </div>
               <div className="card-item">
                 <div className="card-label">Booking Status </div>
-                <div>{value.bookingStatus}</div>
+                <div className="card-value">{value.bookingStatus}</div>
               </div>
             </div>
           </div>
