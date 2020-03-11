@@ -4,7 +4,7 @@ import './index.scss'
 import {userService} from '../../_services'
 import {getUserId} from '../../_helpers'
 
-export default function Bid({ history={} }){
+export default function Bid({ history}){
 const [state,setState]=useState({
     bids:[]
 })
@@ -18,7 +18,7 @@ return(
     <div className="bid-container">
     {state.bids?.length?
     state.bids?.map(value=>{
-    return <div className="bid-item"><ExpansionCard details={value}/></div>
+    return !value.bids?.length && <div className="bid-item"><ExpansionCard details={value} history={history}/></div>
     }
     ):<div style={{textAlign:"center",marginTop:"200px"}}>Sorry No Bids Available :(</div>
     }    

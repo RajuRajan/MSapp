@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function ExpansionCard({details}) {
+export default function ExpansionCard({details ,history}) {
   const classes = useStyles();
   const [err,setErr]=useState(false)
   const[bidAmount,setBidAmount]=useState(0)
@@ -93,10 +93,12 @@ export default function ExpansionCard({details}) {
     else{
       setErr(false)
     userService.bidService({userId:getUserId(),bookingId:details.bookingId,bidAmount}).then(
-      res=>
-      console.log(res)
+      res=>{
+      history.push("/bids")
+      window.location.reload()
+      }
     )
-    }
+    } 
   }
   function handleChange(e){
     setBidAmount(e.target.value);

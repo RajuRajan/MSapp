@@ -84,9 +84,9 @@ export default function MenuAppBar({ history, setCategory, ...props }) {
       case "privacy-policy":
         return <Terms history={history} />; 
       case "my-bookings":
-        return <Mybooking />;
+        return <Mybooking history={history}/>;
       case "bids":
-        return <Bid/>;
+        return <Bid history={history}/>;
     }
   }
 
