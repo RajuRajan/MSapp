@@ -48,7 +48,7 @@ export default function Mybooking({ history={} }) {
               </div>
               <div className="card-item">
                 <div className="card-label">Appointment Time</div>
-                <div className="card-value">{value.appointmentTime}</div>
+                <div className="card-value">{moment(value.serviceTime).format("hh:mm a")}</div>
               </div>
             </div>
             <div className="captain-image">
