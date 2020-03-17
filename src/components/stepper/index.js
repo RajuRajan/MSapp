@@ -11,7 +11,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import TimeInput from 'material-ui-time-picker'
 import SimpleSelect from '../dropdown';
-import timedata from '../../time.json'
+import timedata from '../../time.json';
+import moment from "moment"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,7 +34,7 @@ function getSteps() {
     return ['Select address', 'Select time', 'Payment'];
 }
 
-function getStepContent(stepIndex, handleChange, handleTimeChange, state) {
+function getStepContent(stepIndex, handleChange, handleTimeChange, handleBidChange , state) {
     switch (stepIndex) {
         case 0:
             return (
@@ -120,7 +121,7 @@ function getStepContent(stepIndex, handleChange, handleTimeChange, state) {
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <SimpleSelect handleChange={handleChange} initialValue={state.bidHour}  error={state.tabTwoError&& !state.bidHour && true} name="bidHour" label="Bid Hour" timedata={timedata} />
+                            <SimpleSelect handleChange={handleBidChange} initialValue={state.bidHour}  error={state.tabTwoError&& !state.bidHour && true} name="bidHour" label="Bid Time" timedata={timedata} />
                         </Grid>
 
                         <Grid item xs={12} >
@@ -190,6 +191,9 @@ export default function HorizontalLabelPositionBelowStepper({ updateParentState 
     const handleTimeChange = e => {
         setState({ ...state, serviceTime: e })
     }
+    const handleBidChange =e => {
+        setState({ ...state , [e.target.name]:moment().add(e.target.value,'Minutes').format("HH:mm")})
+    }
     return (
         <div className={classes.root}>
             <Stepper activeStep={activeStep} alternativeLabel >
@@ -209,7 +213,7 @@ export default function HorizontalLabelPositionBelowStepper({ updateParentState 
                         <div>
                             <Typography className={classes.instructions}>
                                 <div style={{ padding: '20px 0px' }}>{
-                                    getStepContent(activeStep, handleChange, handleTimeChange, state)}
+                                    getStepContent(activeStep, handleChange, handleTimeChange, handleBidChange, state)}
                                 </div>
 
                             </Typography>
