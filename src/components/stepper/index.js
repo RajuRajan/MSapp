@@ -192,7 +192,8 @@ export default function HorizontalLabelPositionBelowStepper({ updateParentState 
         setState({ ...state, serviceTime: e })
     }
     const handleBidChange =e => {
-        setState({ ...state , [e.target.name]:moment().add(e.target.value,'Minutes').format("HH:mm")})
+        // console.log(moment().utc().add(e.target.value,'Minutes').format("HH:mm"))
+        setState({ ...state , [e.target.name]:moment().utc().add(e.target.value,'Minutes').format("HH:mm")})
     }
     return (
         <div className={classes.root}>
