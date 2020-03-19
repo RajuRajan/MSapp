@@ -56,11 +56,12 @@ export default function Mybooking({ history={} }) {
             </div>
           </div>
         ) : (
-          <div className="my-booking-card">
+          <div className="my-booking-card">{console.log( moment().utc() , moment(moment(value.bidHour)))}
             <div
               className="label-color"
               style={
                 value.isrejected
+              //  moment(moment().utc().format("HH:mm")).isBefore(value.bidHour)
                   ? {
                       backgroundColor: "#eb4511",
                       backgroundImage:
