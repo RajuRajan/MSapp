@@ -17,7 +17,7 @@ export default function AppRouter({ history }) {
          <>
         <Route
           exact
-          path={["/","/home", "/events", "/terms-of-use", "/privacy-policy","/my-bookings","/bids"]}
+          path={["/","/home", "/events", "/terms-of-use", "/privacy-policy","/my-bookings","/bids","/my-bids" ]}
           render={() => <Landing history={history} />}
         />
         <Route path="/profile" render={() =><Profile history={history} />} />

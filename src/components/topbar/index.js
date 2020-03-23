@@ -18,6 +18,7 @@ import { Listing } from "../listing";
 import Terms from "../../pages/terms";
 import Mybooking from "../../pages/mybooking";
 import Bid from "../../pages/Bid";
+import Mybids from "../../pages/myBids"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -84,6 +85,8 @@ export default function MenuAppBar({ history, setCategory, ...props }) {
         return <Mybooking history={history}/>;
       case "bids":
         return <Bid history={history}/>;
+      case "my-bids":
+        return <Mybids history={history}/>;
     }
   }
 

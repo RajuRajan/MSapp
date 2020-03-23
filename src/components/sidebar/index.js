@@ -61,7 +61,7 @@ export default function SwipeableTemporaryDrawer({history}) {
       </List>
       <Divider />
       <List>
-        {[{value:'Bid',link:'/bids'},{value:'My Bids',link:'/my-bookings'}].map((text, index) => (
+        {[{value:'Bid',link:'/bids'},{value:'My Bids',link:'/my-bids'}].map((text, index) => (
           <Link to={text.link} onClick={()=>{history.push(text.link); setToggle(false);setState({left:false})}}>
           <ListItem button key={text.value}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
