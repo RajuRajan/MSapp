@@ -1,5 +1,4 @@
 import React,{useEffect,useState} from "react";
-import { myBooking } from "../../common";
 import "./index.scss";
 import {userService} from '../../_services'
 import {getUserId} from '../../_helpers'
@@ -52,7 +51,7 @@ export default function Mybooking({ history={} }) {
               </div>
             </div>
             <div className="captain-image">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlK7C8QKWakDOTBVjBPeJ-XitjrkIEGva8J3c-1sNn5VO6nt-7"></img>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlK7C8QKWakDOTBVjBPeJ-XitjrkIEGva8J3c-1sNn5VO6nt-7" alt="alt"></img>
             </div>
           </div>
         ) : (

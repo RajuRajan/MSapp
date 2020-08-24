@@ -1,4 +1,4 @@
-import React, { useContext,Component, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {Link} from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';

@@ -8,7 +8,7 @@ export default function HeaderBar({ value, history,dimmer }) {
     <div className={`header-container ${dimmer?`dimmer`:``}`}>
       <Link to="/home" onClick={() => history.push("/home")}>
         <div className="arrow-icon">
-          <img src={arrow} width="20px" heigh="20px"></img>
+          <img src={arrow} width="20px" heigh="20px" alt="alt"></img>
         </div>
       </Link>
       <div className="category-title">{value.title}</div>

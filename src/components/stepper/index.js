@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import TimeInput from 'material-ui-time-picker'
 import SimpleSelect from '../dropdown';

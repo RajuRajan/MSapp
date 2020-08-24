@@ -1,0 +1,34 @@
+{
+    "name": "HackerWeb",
+    "short_name": "HackerWeb",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#317EFB",
+    "description": "A simply readable Hacker News app.",
+    "icons": [{
+      "src": "https://tech.phonepe.com/wp-content/uploads/2019/05/apple-icon-180x180.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }, {
+      "src": "https://tech.phonepe.com/wp-content/uploads/2019/05/apple-icon-180x180.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }, {
+      "src": "https://tech.phonepe.com/wp-content/uploads/2019/05/apple-icon-180x180.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }, {
+      "src": "https://tech.phonepe.com/wp-content/uploads/2019/05/apple-icon-180x180.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "https://tech.phonepe.com/wp-content/uploads/2019/05/apple-icon-180x180.png",
+      "sizes": "168x168",
+      "type": "image/png"
+    }, {
+      "src": "https://tech.phonepe.com/wp-content/uploads/2019/05/apple-icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }]
+  }

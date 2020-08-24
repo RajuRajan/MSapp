@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import HeaderBar from "../../components/headerBar";
 import { getCategoryDetails } from "../../common";
 import "./index.scss";
@@ -13,7 +12,7 @@ export default function Event(props) {
     setVh(0);
   },[])
   useEffect(()=>{
-    if(vh==0){
+    if(vh===0){
       setVh(window.innerHeight)
     }
   },[vh]
@@ -41,6 +40,7 @@ export default function Event(props) {
                       src={value.service_img}
                       width="50px"
                       height="50px"
+                      alt="alt"
                     ></img>
                   </div>
                   <div className="service-name">{value.service_name}</div>

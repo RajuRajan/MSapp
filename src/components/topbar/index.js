@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Redirect, Route, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -60,9 +60,9 @@ export default function MenuAppBar({ history, setCategory, ...props }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleChange = event => {
-    setAuth(event.target.checked);
-  };
+  // const handleChange = event => {
+  //   setAuth(event.target.checked);
+  // };
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -87,6 +87,8 @@ export default function MenuAppBar({ history, setCategory, ...props }) {
         return <Bid history={history}/>;
       case "my-bids":
         return <Mybids history={history}/>;
+      default:
+        return
     }
   }
 
